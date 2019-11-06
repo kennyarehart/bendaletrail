@@ -1,6 +1,5 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import GoogleMapReact from 'google-map-react'
-import places from '../data/saved_places.json'
 import Tag from './Tag'
 
 // NOTE: google-maps-react/lib/loaders/google_map_loader.js -> line 6 must add libraries=places query
@@ -16,10 +15,20 @@ export default function SimpleMap() {
 		zoom: 14
 	}
 
-	const items = places.features.map((item, i) => {
-		const coor = item.coordinates
-		return <Tag lat={coor[1]} lng={coor[0]} data={item} key={i} map={mapRef} />
-	})
+	const [items, setItems] = useState([])
+
+	useEffect(() => {
+		fetch('http://localhost:3000/api')
+			.then(res => res.json())
+			.then(places => {
+				console.log('places received:', places)
+				const pool = places.features.map((item, i) => {
+					const coor = item.coordinates
+					return <Tag lat={coor[1]} lng={coor[0]} data={item} key={i} map={mapRef} />
+				})
+				setItems(pool)
+			})
+	}, [])
 
 	const handleApiLoaded = (map, maps) => {
 		// use map and maps objects
