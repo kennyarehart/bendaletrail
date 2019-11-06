@@ -1,0 +1,112 @@
+{
+	"features": [
+		{
+			"placeId": "ChIJK6ecGKPIuFQRB7-_eYzB8lI",
+			"url": "http://maps.google.com/?cid=1613994222671333692",
+			"coordinates": [-121.3061919, 44.069089],
+			"title": "Boneyard Beer Pub"
+		},
+		{
+			"placeId": "ChIJ4cEa9yzGuFQRM_SS8uExMjg",
+			"url": "http://maps.google.com/?cid=12877190588227130608",
+			"coordinates": [-121.3178949, 44.0499133],
+			"title": "Monkless Belgian Ales"
+		},
+		{
+			"placeId": "ChIJYfzGoQrGuFQRK-wtJ-NyBR8",
+			"url": "http://maps.google.com/?cid=18413744484355222040",
+			"coordinates": [-121.260495, 44.0552668],
+			"title": "Worthy Brewing Company"
+		},
+		{
+			"placeId": "ChIJzfB7WIDIuFQR3Zr5wjwVj_A",
+			"url": "http://maps.google.com/?cid=14666657144956693249",
+			"coordinates": [-121.3271391, 44.0564868],
+			"title": "Sunriver Brewing Co. - Galveston Pub"
+		},
+		{
+			"placeId": "ChIJqSHpGp7IuFQRbAniIzm7B2Q",
+			"url": "http://maps.google.com/?cid=13990810420404796631",
+			"coordinates": [-121.3078515, 44.0607917],
+			"title": "Silver Moon Brewing"
+		},
+		{
+			"placeId": "ChIJAXMCEyjGuFQRi2sQaQehZsk",
+			"url": "http://maps.google.com/?cid=14130678787419192456",
+			"coordinates": [-121.3144752, 44.0566285],
+			"title": "McMenamins Old St. Francis School"
+		},
+		{
+			"placeId": "ChIJK_Lb09XHuFQRXBMtY99U73M",
+			"url": "http://maps.google.com/?cid=15577879108202010557",
+			"coordinates": [-121.3302727, 44.0508742],
+			"title": "GoodLife Brewing Company"
+		},
+		{
+			"placeId": "ChIJeYqq9dLHuFQR1tR2oR_6XJE",
+			"url": "http://maps.google.com/?cid=17913080210869871665",
+			"coordinates": [-121.3223363, 44.0468512],
+			"title": "Deschutes Brewery Bend Tasting Room"
+		},
+		{
+			"placeId": "ChIJKdzpmp3IuFQRYRnY58BMxWs",
+			"url": "http://maps.google.com/?cid=2892439571107412155",
+			"coordinates": [-121.3114351, 44.0595155],
+			"title": "Deschutes Brewery Bend Public House"
+		},
+		{
+			"placeId": "ChIJQQdX6i_GuFQRVfBaSUHIpDc",
+			"url": "http://maps.google.com/?cid=5019213620313342925",
+			"coordinates": [-121.3079013, 44.0507798],
+			"title": "Crux Fermentation Project"
+		},
+		{
+			"placeId": "ChIJVwht2MTHuFQRi7L19eLz46A",
+			"url": "http://maps.google.com/?cid=669746641730646413",
+			"coordinates": [-121.3328908, 44.0418607],
+			"title": "Cascade Lakes Brewing Company - The Lodge"
+		},
+		{
+			"placeId": "ChIJ3QaEIzHPuFQRGI43K1wLOKk",
+			"url": "http://maps.google.com/?cid=14708845187141780836",
+			"coordinates": [-121.2915741, 44.0908987],
+			"title": "Bridge 99 Brewery"
+		},
+		{
+			"placeId": "ChIJQQLdAZ3IuFQRp1n2H0BV9jQ",
+			"url": "http://maps.google.com/?cid=15052450052543594142",
+			"coordinates": [-121.3138513, 44.0604349],
+			"title": "Bend Brewing Company"
+		},
+		{
+			"placeId": "ChIJN6Qnj4DIuFQRojrczt4wq20",
+			"url": "http://maps.google.com/?cid=16062015194172641850",
+			"coordinates": [-121.3285151, 44.0563243],
+			"title": "10 Barrel Brewing"
+		},
+		{
+			"placeId": "ChIJwY4peDbPuFQRSZVRxnwJlt8",
+			"url": "http://maps.google.com/?cid=3045739601870229675",
+			"coordinates": [-121.2902759, 44.087187],
+			"title": "Craft Kitchen & Brewery"
+		},
+		{
+			"placeId": "ChIJS0-wPCzGuFQR6wskiLRI20E",
+			"url": "http://maps.google.com/?cid=4745466572580326379",
+			"coordinates": [-121.314697, 44.0509529],
+			"title": "Immersion Brewing"
+		},
+		{
+			"placeId": "ChIJV3VUvs0wv1QROLoPG4-ORws",
+			"url": "http://maps.google.com/?cid=14902833774290153143",
+			"coordinates": [-121.5349363, 44.2852323],
+			"title": "Three Creeks Brewing LLC"
+		},
+		{
+			"placeId": "ChIJn9qPRtoqv1QRfA3MxPEAZRY",
+			"url": "http://maps.google.com/?cid=15558576161437777718",
+			"coordinates": [-121.172898, 44.2739983],
+			"title": "Wild Ride Brew"
+		}
+	]
+}
