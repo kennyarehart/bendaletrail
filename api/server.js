@@ -3,7 +3,6 @@ const app = express()
 const PORT = 3000
 const router = require('./routes/api.js')
 const cors = require('cors')
-// const server = require('http').Server(app)
 
 app.use(cors())
 // app.use(express.json())
