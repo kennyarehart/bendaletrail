@@ -2,17 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Map from '../components/Map'
 
-function TheMap({ list, apikey }) {
-	if (!apikey) {
+function TheMap({ apiData }) {
+	console.log(':: The Map ::', apiData)
+	if (!apiData.apikey) {
 		return <div>No API Key</div>
 	}
-	return <Map list={list} apikey={apikey} />
+	return <Map list={apiData.list} apikey={apiData.apikey} />
 }
 
 const mapStateToProps = state => {
 	return {
-		apikey: state.apikey,
-		list: state.list
+		apiData: state.apiData
 	}
 }
 

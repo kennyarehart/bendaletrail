@@ -1,17 +1,34 @@
-import { ADD_POST, DELETE_POST, FETCH_API, TOGGLE_VISIT } from '../actions'
+import { combineReducers } from 'redux'
+import { FETCH_API, TOGGLE_VISIT } from '../actions'
 
-export default function postReducer(state = {}, action) {
+const defaultState = {
+	list: [],
+	apikey: null
+}
+
+function apiData(state = defaultState, action) {
 	console.log('| state:', state, '| action:', action)
 	switch (action.type) {
-		// case ADD_POST:
-		// 	return [...state, action.payload]
-		// case DELETE_POST:
-		// 	return state.filter(post => post._id !== action.payload.id)
 		case FETCH_API:
-			return action
-		case TOGGLE_VISIT:
-			return state // [state, action.payload]
+			return action.apiData
+		// 	return [...state,  list: action.list, apikey: action.apikey }
 		default:
 			return state
 	}
 }
+
+const defaultPlace = {
+	placeId: null
+}
+
+function placeId(state = defaultPlace, action) {
+	console.log('||| state:', state, '| action:', action)
+	switch (action.type) {
+		case TOGGLE_VISIT:
+			return action.placeId
+		default:
+			return state
+	}
+}
+
+export default combineReducers({ apiData, placeId })

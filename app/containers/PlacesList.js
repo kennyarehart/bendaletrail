@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { togglePlace } from '../actions'
 import ListItem from '../components/ListItem'
 
-function PlacesList({ list, onToggle }) {
-	if (!list) {
+function PlacesList({ apiData, onToggle }) {
+	console.log(':: PlacesList ::', apiData)
+	if (!apiData.list.length) {
 		return <div>No Posts</div>
 	}
 
 	function handleChange(event) {
-		// event.preventDefault()
 		console.log(event.target.id)
 		onToggle(event.target.id)
 	}
@@ -18,7 +18,7 @@ function PlacesList({ list, onToggle }) {
 		<div id="info-panel">
 			<form onChange={handleChange}>
 				<ul>
-					{list.map((item, i) => (
+					{apiData.list.map((item, i) => (
 						<ListItem key={i} {...item} />
 					))}
 				</ul>
@@ -30,13 +30,14 @@ function PlacesList({ list, onToggle }) {
 const mapStateToProps = state => {
 	console.log('PlacesList > mapStateToProps() > state:', state)
 	return {
-		list: state.list
+		apiData: state.apiData
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		onToggle: id => {
+			console.log('dispatch onToggle()')
 			dispatch(togglePlace(id))
 		}
 	}

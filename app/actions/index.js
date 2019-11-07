@@ -39,24 +39,22 @@ import axios from 'axios'
 
 const apiUrl = 'http://localhost:3000'
 
-export const fetchPosts = ({ list, apikey }) => {
+export const fetchPosts = apiData => {
+	console.log(apiData)
 	return {
 		type: FETCH_API,
-		list,
-		apikey
+		apiData
 	}
 }
 
 export const fetchAllPosts = () => {
-	console.log('actions: fetchAllPosts()')
+	console.log(':: actions :: fetchAllPosts()')
 	return dispatch => {
 		return axios
 			.get(`${apiUrl}/api`)
 			.then(response => {
 				console.log('response:', response)
-				const check = fetchPosts(response.data)
-				console.log('check:', check)
-				dispatch(check)
+				dispatch(fetchPosts(response.data))
 			})
 			.catch(error => {
 				throw error
@@ -67,6 +65,7 @@ export const fetchAllPosts = () => {
 //
 
 export const togglePlace = placeId => {
+	console.log(':: actions :: togglePlace()')
 	return dispatch => {
 		return axios
 			.post(`${apiUrl}/toggle`, { placeId })
@@ -79,9 +78,9 @@ export const togglePlace = placeId => {
 	}
 }
 
-export const togglePlaceSuccess = data => {
+export const togglePlaceSuccess = ({ placeId }) => {
 	return {
 		type: TOGGLE_VISIT,
-		payload: data
+		placeId
 	}
 }

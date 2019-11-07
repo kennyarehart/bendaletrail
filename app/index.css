@@ -26,6 +26,11 @@
 	position: absolute;
 }
 
+#info-panel {
+	height: 100%;
+	overflow: scroll;
+}
+
 ul {
 	background-color: rgba(128, 128, 128, 0.85);
 	color: white;
