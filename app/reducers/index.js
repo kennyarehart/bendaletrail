@@ -1,16 +1,17 @@
-import { SELECT_CHANNEL, REQUEST_POSTS, RECEIVE_POSTS } from '../actions'
+import { ADD_POST, DELETE_POST, FETCH_API, TOGGLE_VISIT } from '../actions'
 
-const reducer = (state = {}, action) => {
+export default function postReducer(state = {}, action) {
+	console.log('| state:', state, '| action:', action)
 	switch (action.type) {
-		case SELECT_CHANNEL:
-			return { ...state, channel: action.channel }
-		case REQUEST_POSTS:
-			return { ...state, loading: true }
-		case RECEIVE_POSTS:
-			return { ...state, json: action.json, loading: false }
+		// case ADD_POST:
+		// 	return [...state, action.payload]
+		// case DELETE_POST:
+		// 	return state.filter(post => post._id !== action.payload.id)
+		case FETCH_API:
+			return action
+		case TOGGLE_VISIT:
+			return state // [state, action.payload]
 		default:
 			return state
 	}
 }
-
-export default reducer

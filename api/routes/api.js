@@ -9,4 +9,9 @@ router.get('/api', (req, res, next) => {
 	console.log('Sent list of places json')
 })
 
+router.post('/toggle', (req, res, next) => {
+	console.log('req:', req.body)
+	res.send(req.body)
+})
+
 module.exports = router

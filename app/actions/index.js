@@ -1,30 +1,87 @@
-export const SELECT_CHANNEL = 'SELECT_CHANNEL'
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+let service
 
-const MY_API_KEY = 'c39a26d9c12f48dba2a5c00e35684ecc'
+function getService(map) {
+	if (!service) {
+		service = new google.maps.places.PlacesService(map.current.map_)
+	}
+	return service
+}
 
-export const getChannel = channel => ({
-	type: SELECT_CHANNEL,
-	channel
-})
+export const getPlace = (map, data) => {
+	return new Promise((resolve, reject) => {
+		var service = getService(map)
+		service.getDetails(
+			{
+				placeId: data.placeId,
+				fields: ['name', 'opening_hours', 'permanently_closed', 'url']
+			},
+			(place, status) => {
+				if (status == 'OK') {
+					resolve([status, place])
+				} else {
+					reject(status)
+				}
+			}
+		)
+	})
+}
 
-export const requestPosts = () => ({
-	type: REQUEST_POSTS
-})
+//
 
-export const receivedPosts = json => ({
-	type: RECEIVE_POSTS,
-	json: json.articles
-})
+export const ADD_POST = 'ADD_POST'
+export const DELETE_POST = 'DELETE_POST'
 
-export function fetchPosts(channel) {
-	return function(dispatch) {
-		dispatch(requestPosts())
-		return fetch(`https://newsapi.org/v1/articles?source=${channel}&apiKey=${MY_API_KEY}`)
-			.then(response => response.json(), error => console.log('An error occurred.', error))
-			.then(json => {
-				dispatch(receivedPosts(json))
+export const FETCH_API = 'FETCH_API'
+export const TOGGLE_VISIT = 'TOGGLE_VISIT'
+
+//
+import axios from 'axios'
+
+const apiUrl = 'http://localhost:3000'
+
+export const fetchPosts = ({ list, apikey }) => {
+	return {
+		type: FETCH_API,
+		list,
+		apikey
+	}
+}
+
+export const fetchAllPosts = () => {
+	console.log('actions: fetchAllPosts()')
+	return dispatch => {
+		return axios
+			.get(`${apiUrl}/api`)
+			.then(response => {
+				console.log('response:', response)
+				const check = fetchPosts(response.data)
+				console.log('check:', check)
+				dispatch(check)
 			})
+			.catch(error => {
+				throw error
+			})
+	}
+}
+
+//
+
+export const togglePlace = placeId => {
+	return dispatch => {
+		return axios
+			.post(`${apiUrl}/toggle`, { placeId })
+			.then(response => {
+				dispatch(togglePlaceSuccess(response.data))
+			})
+			.catch(error => {
+				throw error
+			})
+	}
+}
+
+export const togglePlaceSuccess = data => {
+	return {
+		type: TOGGLE_VISIT,
+		payload: data
 	}
 }

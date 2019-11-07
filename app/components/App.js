@@ -1,12 +1,14 @@
 import React from 'react'
-import ChannelsField from './ChannelsField'
-import Button from '../containers/Button'
-import TopNews from '../containers/TopNews'
-const App = () => (
-	<div>
-		<ChannelsField />
-		<Button />
-		<TopNews />
-	</div>
-)
+import PlacesList from '../containers/PlacesList'
+import TheMap from '../containers/TheMap'
+
+function App() {
+	return (
+		<div id="main">
+			<TheMap />
+			<PlacesList />
+		</div>
+	)
+}
+
 export default App

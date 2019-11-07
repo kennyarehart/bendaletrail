@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPlace } from './utils'
+import { getPlace } from '../actions'
 
 function Tag({ data, map }) {
 	function handleClick(e) {
