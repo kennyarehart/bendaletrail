@@ -17,21 +17,14 @@ export default function SimpleMap() {
 		zoom: 14
 	}
 
-	const [items, setItems] = useState([])
 	const [panel, setPanel] = useState()
+	const [data, setData] = useState({ list: [] })
 
 	useEffect(() => {
 		axios.get('http://localhost:3000/api').then(
 			response => {
 				console.log('list received:', response.data)
-
-				// setPanel(<InfoPanel places={list.features} />)
-
-				const pool = response.data.features.map((item, i) => {
-					const coor = item.coordinates
-					return <Tag lat={coor[1]} lng={coor[0]} data={item} key={i} map={mapRef} />
-				})
-				setItems(pool)
+				setData(response.data)
 			},
 			error => {
 				console.log(error)
@@ -42,14 +35,20 @@ export default function SimpleMap() {
 	return (
 		<div id="main">
 			<div id="map-container">
-				<GoogleMapReact
-					ref={mapRef}
-					bootstrapURLKeys={{ key: 'your key goes here' }}
-					defaultCenter={defaultProps.center}
-					defaultZoom={defaultProps.zoom}
-					yesIWantToUseGoogleMapApiInternals>
-					{items}
-				</GoogleMapReact>
+				{data.apikey ? (
+					<GoogleMapReact
+						ref={mapRef}
+						bootstrapURLKeys={{ key: data.apikey }}
+						defaultCenter={defaultProps.center}
+						defaultZoom={defaultProps.zoom}
+						yesIWantToUseGoogleMapApiInternals>
+						{data.list.map((item, i) => (
+							<Tag lat={item.coordinates[1]} lng={item.coordinates[0]} data={item} key={i} map={mapRef} />
+						))}
+					</GoogleMapReact>
+				) : (
+					<div />
+				)}
 			</div>
 			{panel}
 		</div>
