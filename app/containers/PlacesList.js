@@ -22,7 +22,7 @@ function PlacesList({ apiData, onToggle }) {
 	return (
 		<div id="info-panel" className={showing ? 'info-panel-show' : ''}>
 			<div>
-				<button onClick={handleClick}>X</button>
+				<button onClick={handleClick}>{showing ? 'X' : '>'}</button>
 			</div>
 			<form onChange={handleChange} className={showing ? '' : 'nope'}>
 				<ul>

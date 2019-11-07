@@ -64,12 +64,13 @@ export const fetchAllPosts = () => {
 
 //
 
-export const togglePlace = (placeId, isChecked) => {
+export const togglePlace = (placeId, visited) => {
 	console.log(':: actions :: togglePlace()')
 	return dispatch => {
 		return axios
-			.post(`${apiUrl}/toggle`, { placeId, isChecked })
+			.post(`${apiUrl}/toggle`, { placeId, visited })
 			.then(response => {
+				console.log('response:', response)
 				dispatch(togglePlaceSuccess(response.data))
 			})
 			.catch(error => {
@@ -78,9 +79,9 @@ export const togglePlace = (placeId, isChecked) => {
 	}
 }
 
-export const togglePlaceSuccess = ({ placeId }) => {
+export const togglePlaceSuccess = apiPlace => {
 	return {
 		type: TOGGLE_VISIT,
-		placeId
+		apiPlace
 	}
 }

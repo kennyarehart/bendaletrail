@@ -18,17 +18,18 @@ function apiData(state = defaultState, action) {
 }
 
 const defaultPlace = {
-	placeId: null
+	placeId: null,
+	visited: false
 }
 
-function placeId(state = defaultPlace, action) {
-	// console.log('||| state:', state, '| action:', action)
+function apiPlace(state = defaultPlace, action) {
+	console.log('||| state:', state, '| action:', action)
 	switch (action.type) {
 		case TOGGLE_VISIT:
-			return action.placeId
+			return action.apiPlace
 		default:
 			return state
 	}
 }
 
-export default combineReducers({ apiData, placeId })
+export default combineReducers({ apiData, apiPlace })

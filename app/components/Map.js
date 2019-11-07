@@ -1,19 +1,12 @@
 import React, { useRef } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Tag from './Tag'
+import fitBoundUtil from '../actions/fitBoundUtil'
 
-// NOTE: google-maps-react/lib/loaders/google_map_loader.js -> line 6 must add libraries=places query
-
-export default function Map({ list, apikey }) {
+export default function Map({ list, apikey, apiPlace }) {
 	const mapRef = useRef()
 
-	var defaultProps = {
-		center: {
-			lat: 44.056103,
-			lng: -121.314648
-		},
-		zoom: 14
-	}
+	const defaultProps = fitBoundUtil(list, apiPlace)
 
 	return (
 		<div id="map-container">
@@ -21,10 +14,12 @@ export default function Map({ list, apikey }) {
 				ref={mapRef}
 				bootstrapURLKeys={{ key: apikey }}
 				defaultCenter={defaultProps.center}
+				center={defaultProps.center}
 				defaultZoom={defaultProps.zoom}
+				zoom={defaultProps.zoom}
 				yesIWantToUseGoogleMapApiInternals>
 				{list.map((item, i) => (
-					<Tag lat={item.lat} lng={item.lng} data={item} key={i} map={mapRef} />
+					<Tag lat={item.lat} lng={item.lng} data={item} key={i} map={mapRef} apiPlace={apiPlace} />
 				))}
 			</GoogleMapReact>
 		</div>

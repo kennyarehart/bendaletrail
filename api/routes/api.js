@@ -19,9 +19,14 @@ router.get('/api', (req, res, next) => {
 		if (err || !results.length) {
 			res.send('ERROR')
 		}
+
 		// places.apikey = results[0].val
 		let places = {
-			list: results
+			list: results.sort((a, b) => {
+				if (a.title < b.title) return -1
+				if (a.title > b.title) return 1
+				return 0
+			})
 		}
 		places.apikey = process.env.GOOGLE_MAPS_KEY
 		res.json(places)
@@ -34,7 +39,7 @@ router.post('/toggle', (req, res, next) => {
 
 	connection.query(
 		'UPDATE `places` SET `visited` = ? WHERE `placeId` = ?',
-		[req.body.isChecked ? 1 : 0, req.body.placeId],
+		[req.body.visited ? 1 : 0, req.body.placeId],
 		(err, results, fields) => {
 			if (err) {
 				res.send('ERROR')
