@@ -4,10 +4,13 @@
 }
 
 .label {
-	width: 10px;
-	height: 10px;
-	border-radius: 4px;
-	background-color: red;
+	width: 15px;
+	height: 15px;
+	border-radius: 8px;
+	background-color: rgb(63, 50, 255);
+}
+.visited {
+	background-color: rgba(206, 93, 93, 0.5);
 }
 
 #root {
@@ -43,4 +46,8 @@ li {
 label {
 	padding-left: 0.3em;
 	font-size: 1em;
+}
+
+input[type='checkbox']:checked + label {
+	color: rgb(100, 100, 100);
 }

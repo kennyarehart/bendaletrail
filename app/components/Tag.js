@@ -2,6 +2,7 @@ import React from 'react'
 import { getPlace } from '../actions'
 
 function Tag({ data, map }) {
+	// console.log('TAG', data)
 	function handleClick(e) {
 		e.preventDefault()
 		console.log('click:', data.title)
@@ -10,7 +11,7 @@ function Tag({ data, map }) {
 		})
 	}
 
-	return <div className="label" onClick={handleClick}></div>
+	return <div className={(data.visited ? 'visited ' : '') + 'label'} onClick={handleClick}></div>
 }
 
 export default Tag

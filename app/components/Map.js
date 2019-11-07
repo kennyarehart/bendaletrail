@@ -24,7 +24,7 @@ export default function Map({ list, apikey }) {
 				defaultZoom={defaultProps.zoom}
 				yesIWantToUseGoogleMapApiInternals>
 				{list.map((item, i) => (
-					<Tag lat={item.coordinates[1]} lng={item.coordinates[0]} data={item} key={i} map={mapRef} />
+					<Tag lat={item.lat} lng={item.lng} data={item} key={i} map={mapRef} />
 				))}
 			</GoogleMapReact>
 		</div>
