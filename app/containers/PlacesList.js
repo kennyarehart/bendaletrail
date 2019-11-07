@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { togglePlace } from '../actions'
 import ListItem from '../components/ListItem'
@@ -9,14 +9,22 @@ function PlacesList({ apiData, onToggle }) {
 		return <div>No Posts</div>
 	}
 
+	const [showing, setShowing] = useState(false)
+
 	function handleChange(event) {
-		console.log(event.target.id)
-		onToggle(event.target.id)
+		onToggle(event.target.id, event.target.checked)
+	}
+
+	function handleClick(event) {
+		setShowing(!showing)
 	}
 
 	return (
-		<div id="info-panel">
-			<form onChange={handleChange}>
+		<div id="info-panel" className={showing ? 'info-panel-show' : ''}>
+			<div>
+				<button onClick={handleClick}>X</button>
+			</div>
+			<form onChange={handleChange} className={showing ? '' : 'nope'}>
 				<ul>
 					{apiData.list.map((item, i) => (
 						<ListItem key={i} {...item} />
@@ -36,9 +44,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onToggle: id => {
+		onToggle: (id, isChecked) => {
 			console.log('dispatch onToggle()')
-			dispatch(togglePlace(id))
+			dispatch(togglePlace(id, isChecked))
 		}
 	}
 }

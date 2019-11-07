@@ -29,11 +29,6 @@
 	position: absolute;
 }
 
-#info-panel {
-	height: 100%;
-	overflow: scroll;
-}
-
 ul {
 	background-color: rgba(128, 128, 128, 0.85);
 	color: white;
@@ -50,4 +45,19 @@ label {
 
 input[type='checkbox']:checked + label {
 	color: rgb(100, 100, 100);
+}
+
+button {
+	padding: 1em;
+}
+
+.nope {
+	display: none;
+	pointer-events: none;
+}
+
+.info-panel-show {
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
 }

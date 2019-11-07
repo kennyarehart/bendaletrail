@@ -32,16 +32,18 @@ router.get('/api', (req, res, next) => {
 router.post('/toggle', (req, res, next) => {
 	console.log('req:', req.body)
 
-	connection.query('UPDATE `places` SET `visited` = 1 WHERE `placeId` = ?', [req.body.placeId], (err, results, fields) => {
-		if (err) {
-			res.send('ERROR')
+	connection.query(
+		'UPDATE `places` SET `visited` = ? WHERE `placeId` = ?',
+		[req.body.isChecked ? 1 : 0, req.body.placeId],
+		(err, results, fields) => {
+			if (err) {
+				res.send('ERROR')
+			}
+			// console.log(results)
+
+			res.send(req.body)
 		}
-
-		console.log(results)
-		console.log(fields)
-
-		res.send(req.body)
-	})
+	)
 })
 
 module.exports = router

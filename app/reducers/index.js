@@ -7,7 +7,7 @@ const defaultState = {
 }
 
 function apiData(state = defaultState, action) {
-	console.log('| state:', state, '| action:', action)
+	// console.log('| state:', state, '| action:', action)
 	switch (action.type) {
 		case FETCH_API:
 			return action.apiData
@@ -22,7 +22,7 @@ const defaultPlace = {
 }
 
 function placeId(state = defaultPlace, action) {
-	console.log('||| state:', state, '| action:', action)
+	// console.log('||| state:', state, '| action:', action)
 	switch (action.type) {
 		case TOGGLE_VISIT:
 			return action.placeId
