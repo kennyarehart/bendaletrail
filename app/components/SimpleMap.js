@@ -50,7 +50,7 @@ export default function SimpleMap() {
 					<div />
 				)}
 			</div>
-			{panel}
+			{/* {data.apikey ? <InfoPanel data={data} /> : <div />} */}
 		</div>
 	)
 }
