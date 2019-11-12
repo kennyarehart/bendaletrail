@@ -1,3 +1,12 @@
+import axios from 'axios'
+
+export const ADD_POST = 'ADD_POST'
+export const DELETE_POST = 'DELETE_POST'
+
+export const FETCH_API = 'FETCH_API'
+export const TOGGLE_VISIT = 'TOGGLE_VISIT'
+
+const apiUrl = 'http://localhost:3000'
 let service
 
 function getService(map) {
@@ -26,19 +35,6 @@ export const getPlace = (map, data) => {
 	})
 }
 
-//
-
-export const ADD_POST = 'ADD_POST'
-export const DELETE_POST = 'DELETE_POST'
-
-export const FETCH_API = 'FETCH_API'
-export const TOGGLE_VISIT = 'TOGGLE_VISIT'
-
-//
-import axios from 'axios'
-
-const apiUrl = 'http://localhost:3000'
-
 export const fetchPosts = apiData => {
 	console.log(apiData)
 	return {
@@ -61,8 +57,6 @@ export const fetchAllPosts = () => {
 			})
 	}
 }
-
-//
 
 export const togglePlace = (placeId, visited) => {
 	console.log(':: actions :: togglePlace()')

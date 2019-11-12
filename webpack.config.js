@@ -1,15 +1,21 @@
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
 	entry: './app/index.js',
 	output: {
-		path: path.resolve(__dirname, 'build'), // 'dist'),
-		filename: 'index_bundle.js'
+		path: path.resolve(__dirname, 'build'),
+		publicPath: '/',
+		filename: 'bundle.js'
 	},
 	module: {
 		rules: [
-			{ test: /\.(js)$/, use: 'babel-loader' },
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: ['babel-loader']
+			},
 			{
 				test: /\.(png|jpg)$/,
 				loader: 'file-loader'
@@ -20,15 +26,8 @@ module.exports = {
 	mode: 'development',
 	plugins: [
 		new HtmlWebpackPlugin({
-			// template: 'app/index.html'
 			template: path.resolve('app/index.html')
-		})
+		}),
+		new Dotenv()
 	]
 }
-
-// module.exports = {
-// 	entry: './src/index.js',
-// 	output: { path: __dirname + '/dist', publicPath: '/', filename: 'bundle.js' },
-// 	devServer: { contentBase: './dist' },
-// 	module: { rules: [{ test: /\.(js|jsx)$/, exclude: /node_modules/, use: ['babel-loader'] }] }
-// }
